@@ -25,4 +25,8 @@ public class Car {
     private String engine;
     private String status;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
 }
