@@ -1,11 +1,19 @@
 package com.team_spak.car_rental.model;
 
-public class Category {
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-private  int id ;
+@Setter
+@Getter
+@Entity
+public class Category {
+@Id
+@GeneratedValue (strategy = GenerationType.AUTO)
+private  long id ;
+
 private  String  name  ;
 private String description ;
-
 
 
 
