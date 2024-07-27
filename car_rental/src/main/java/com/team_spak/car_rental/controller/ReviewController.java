@@ -17,7 +17,7 @@ public class ReviewController {
     @GetMapping("/findAll/{carId}")
     public List<ResponseReviewDto> findAllByReviewIdAndCarId(@PathVariable("carId") long carId) {
 
-        return reviewService.findAll(carId);
+        return reviewService.findAllByReviewIdAndCarId(carId);
     }
 
     @PostMapping("/save/{carId}")
@@ -34,6 +34,6 @@ public class ReviewController {
     @DeleteMapping("/delete/{id}/{carId}")
     public String deleteByReviewIdAndCarId(@PathVariable("id") long id, @PathVariable long carId){
 
-        return reviewService.delete(id, carId);
+        return reviewService.deleteByReviewIdAndCarId(id, carId);
     }
 }
