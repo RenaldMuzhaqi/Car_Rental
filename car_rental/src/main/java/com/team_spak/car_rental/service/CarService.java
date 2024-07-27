@@ -44,14 +44,14 @@ public class CarService implements CarServiceInterface {
     @Override
     public ResponseCarDto findById (Long id) {
         Car existingCar = carRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Category not found"));
+                () -> new RuntimeException("Car not found"));
         return carMapper.mapToResponse(existingCar);
     }
 
     @Override
     public ResponseCarDto update (Long id, CreateCarDTO createCarDTO) {
         Car existingCar = carRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Category not found"));
+                () -> new RuntimeException("Car not found"));
 
         existingCar.setBrand(createCarDTO.getBrand());
         existingCar.setModel(createCarDTO.getModel());

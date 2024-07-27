@@ -14,25 +14,26 @@ import java.util.List;
 public class ReviewController {
     private ReviewService reviewService;
 
-    @GetMapping("/findAll")
-    public List<ResponseReviewDto> findAll() {
-        return reviewService.findAll();
+    @GetMapping("/findAll/{carId}")
+    public List<ResponseReviewDto> findAllByReviewIdAndCarId(@PathVariable("carId") long carId) {
+
+        return reviewService.findAll(carId);
     }
 
-    @PostMapping("/save")
-    public ResponseReviewDto save(@RequestBody CreateReviewDto createReviewDto) {
-        return reviewService.save(createReviewDto);
+    @PostMapping("/save/{carId}")
+    public ResponseReviewDto save(@RequestBody CreateReviewDto createReviewDto, @PathVariable("carId") long carId) {
+        return reviewService.save(createReviewDto, carId);
     }
 
-    @GetMapping("/findById/{id}")
-    public ResponseReviewDto findById(@PathVariable("id") long id){
+    @GetMapping("/findById/{id}/{carId}")
+    public ResponseReviewDto findByReviewIdAndCarId(@PathVariable("id") long id, @PathVariable("carId") long carId){
 
-        return reviewService.findById(id);
+        return reviewService.findByReviewIdAndCarId(id, carId);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
+    @DeleteMapping("/delete/{id}/{carId}")
+    public String deleteByReviewIdAndCarId(@PathVariable("id") long id, @PathVariable long carId){
 
-        return reviewService.delete(id);
+        return reviewService.delete(id, carId);
     }
 }
