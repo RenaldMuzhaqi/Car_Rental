@@ -17,24 +17,28 @@ public class CategoryController {
     private CategoryServiceInterface categoryServiceInterface;
 
     @GetMapping("/findAll")
-    public List<ResponseCategoryDto> findAll() {
-        return categoryServiceInterface.findAll();
+    public List<ResponseCategoryDto> findAllCategories() {
+        return categoryServiceInterface.findAllCategories();
     }
 
     @PostMapping("/save")
-    public ResponseCategoryDto save(@RequestBody CreateCategoryDto createCategoryDto) {
-        return categoryServiceInterface.save(createCategoryDto);
+    public ResponseCategoryDto saveNewCategory(@RequestBody CreateCategoryDto createCategoryDto) {
+        return categoryServiceInterface.saveNewCategory(createCategoryDto);
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseCategoryDto findById(@PathVariable("id") long id){
+    public ResponseCategoryDto findCategoryById(@PathVariable("id") long id){
 
-        return categoryServiceInterface.findById(id);
+        return categoryServiceInterface.findCategoryById(id);
+    }
+    @PutMapping("update/{id}")
+    public ResponseCategoryDto updateExistingCategory(@RequestBody CreateCategoryDto createCategoryDto, @PathVariable("id") long id){
+        return categoryServiceInterface.updateExistingCategory(id, createCategoryDto);
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
+    public String deleteCategoryById(@PathVariable("id") long id){
 
-        return categoryServiceInterface.delete(id);
+        return categoryServiceInterface.deleteCategoryById(id);
     }
 }

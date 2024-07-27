@@ -13,6 +13,6 @@ public class ResponseCarDto {
     private int year;
     private String color;
     private String engine;
-    private String status;
+    private boolean available;
 
 }

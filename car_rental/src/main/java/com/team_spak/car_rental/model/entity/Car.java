@@ -23,7 +23,7 @@ public class Car {
     private int year;
     private String color;
     private String engine;
-    private String status;
+    private boolean available;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)

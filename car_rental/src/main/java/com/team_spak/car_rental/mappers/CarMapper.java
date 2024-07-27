@@ -13,6 +13,8 @@ public class CarMapper {
         car.setModel(createCarDTO.getModel());
         car.setYear(createCarDTO.getYear());
         car.setColor(createCarDTO.getColor());
+        car.setEngine(createCarDTO.getEngine());
+        car.setAvailable(createCarDTO.isAvailable());
         return car;
     }
     public ResponseCarDto mapToResponse(Car car) {
@@ -21,6 +23,9 @@ public class CarMapper {
         responseCarDTO.setModel(car.getModel());
         responseCarDTO.setYear(car.getYear());
         responseCarDTO.setColor(car.getColor());
+        responseCarDTO.setEngine(car.getEngine());
+        responseCarDTO.setAvailable(car.isAvailable());
+        responseCarDTO.setId(car.getId());
         return responseCarDTO;
     }
 }

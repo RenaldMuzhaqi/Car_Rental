@@ -19,7 +19,7 @@ public class CategoryService implements CategoryServiceInterface {
     private CategoryMapper categoryMapper;
 
     @Override
-    public List<ResponseCategoryDto> findAll() {
+    public List<ResponseCategoryDto> findAllCategories() {
 
         List<Category> categoryList = categoryRepository.findAll();
         List<ResponseCategoryDto> responseCategoryDtoList = new ArrayList<>();
@@ -33,7 +33,7 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public ResponseCategoryDto save(CreateCategoryDto createCategoryDto) {
+    public ResponseCategoryDto saveNewCategory(CreateCategoryDto createCategoryDto) {
 
         Category newCategory = categoryMapper.mapToEntity(createCategoryDto);
         Category savedCategory = categoryRepository.save(newCategory);
@@ -42,7 +42,7 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public ResponseCategoryDto findById(long id) {
+    public ResponseCategoryDto findCategoryById(long id) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Category not found"));
@@ -51,7 +51,7 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public ResponseCategoryDto update(long id, CreateCategoryDto createCategoryDto) {
+    public ResponseCategoryDto updateExistingCategory(long id, CreateCategoryDto createCategoryDto) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Category not found"));
@@ -65,7 +65,7 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public String delete(long id) {
+    public String deleteCategoryById(long id) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Category not found"));

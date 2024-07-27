@@ -20,6 +20,7 @@ public class ReviewMapper {
         responseReviewDto.setUserName(review.getUserName());
         responseReviewDto.setComment(review.getComment());
         responseReviewDto.setRating(review.getRating());
+        responseReviewDto.setId(review.getId());
         return responseReviewDto;
     }
 }

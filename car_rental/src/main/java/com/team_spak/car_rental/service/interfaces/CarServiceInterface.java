@@ -7,13 +7,14 @@ import java.util.List;
 
 public interface CarServiceInterface {
 
-    public List<ResponseCarDto> findAll();
+    public List<ResponseCarDto> findByCategoryId(long categoryId);
 
-    public ResponseCarDto save(CreateCarDTO createCarDTO, long categoryId);
 
-    public ResponseCarDto findById (Long id);
+    public ResponseCarDto saveNewCar(CreateCarDTO createCarDTO, long categoryId);
 
-    public ResponseCarDto update (Long id, CreateCarDTO createCarDTO);
+    public ResponseCarDto findCarById (Long id);
 
-    public String delete (Long id);
+    public ResponseCarDto updateExistingCar (Long id, CreateCarDTO createCarDTO);
+
+    public String deleteCarById (Long id);
 }

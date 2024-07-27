@@ -36,7 +36,7 @@ public class ReviewService implements ReviewServiceInterface {
     }
 
     @Override
-    public ResponseReviewDto save(CreateReviewDto createReviewDto,long carId){
+    public ResponseReviewDto saveByReviewIdAndCarId(CreateReviewDto createReviewDto,long carId){
         Car existingCar = carRepository.findById(carId).orElseThrow(()->new RuntimeException("Car not found"));
         Review newReview = reviewMapper.mapToEntity(createReviewDto);
 
@@ -57,7 +57,7 @@ public class ReviewService implements ReviewServiceInterface {
     }
 
     @Override
-    public ResponseReviewDto update(long id, CreateReviewDto createReviewDto, long carId){
+    public ResponseReviewDto updateByReviewIdAndCarId(long id, CreateReviewDto createReviewDto, long carId){
         Car existingCar = carRepository.findById(carId).orElseThrow(()->new RuntimeException("Car not found"));
         Review existingReview = reviewRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Review not found"));

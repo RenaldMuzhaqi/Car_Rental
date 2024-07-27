@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface UserServiceInterface {
 
-    public List<ResponseUserDto> findAll();
+    public List<ResponseUserDto> findAllUsers();
 
-    public ResponseUserDto save(CreateUserDto createUserDto);
+    public ResponseUserDto saveNewUser(CreateUserDto createUserDto);
 
-    public ResponseUserDto findById(long id);
+    public ResponseUserDto findUserById(long id);
 
-    public ResponseUserDto update(long id, CreateUserDto createUserDto);
+    public ResponseUserDto updateExistingUser(long id, CreateUserDto createUserDto);
 
-    public String delete(long id);
+    public String deleteUser(long id);
 
 
 }

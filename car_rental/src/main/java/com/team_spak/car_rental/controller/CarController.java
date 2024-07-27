@@ -2,7 +2,7 @@ package com.team_spak.car_rental.controller;
 
 import com.team_spak.car_rental.model.dto.CreateCarDTO;
 import com.team_spak.car_rental.model.dto.ResponseCarDto;
-import com.team_spak.car_rental.service.CarService;
+import com.team_spak.car_rental.service.interfaces.CarServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +12,34 @@ import java.util.List;
 @RestController
 @RequestMapping ("/car")
 public class CarController {
-    private final CarService carService;
+    private final CarServiceInterface carServiceInterface;
 
-    @GetMapping("/findAll")
-    public List<ResponseCarDto> findAll() {
-        return carService.findAll();
+    @GetMapping("/findAll/{categoryId}")
+    public List<ResponseCarDto> findByCategoryId(@PathVariable("categoryId") long categoryId) {
+        return carServiceInterface.findByCategoryId(categoryId);
     }
 
     @PostMapping("/save/{categoryId}")
-    public ResponseCarDto save(@RequestBody CreateCarDTO createCategoryDto,@PathVariable("categoryId") long categoryId) {
-        return carService.save(createCategoryDto,categoryId);
+    public ResponseCarDto saveNewCar(@RequestBody CreateCarDTO createCategoryDto,@PathVariable("categoryId") long categoryId) {
+        return carServiceInterface.saveNewCar(createCategoryDto,categoryId);
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseCarDto findById(@PathVariable("id") long id){
+    public ResponseCarDto findCarById(@PathVariable("id") long id){
 
-        return carService.findById(id);
+        return carServiceInterface.findCarById(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseCarDto updateExistingCar(@RequestBody CreateCarDTO createCarDto,@PathVariable("id") long id){
+        return carServiceInterface.updateExistingCar(id, createCarDto);
+    }
+
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id){
 
-        return carService.delete(id);
+        return carServiceInterface.deleteCarById(id);
     }
 }
 

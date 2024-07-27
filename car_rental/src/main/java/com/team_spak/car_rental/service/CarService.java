@@ -22,8 +22,8 @@ public class CarService implements CarServiceInterface {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<ResponseCarDto> findAll() {
-        List<Car> carList = carRepository.findAll();
+    public List<ResponseCarDto> findByCategoryId(long categoryId) {
+        List<Car> carList = carRepository.findByCategoryId(categoryId);
         List<ResponseCarDto> ResponsecarDTOList = new ArrayList<>();
         for (Car car : carList) {
             ResponsecarDTOList.add(carMapper.mapToResponse(car));
@@ -33,7 +33,7 @@ public class CarService implements CarServiceInterface {
 
 
     @Override
-    public ResponseCarDto save(CreateCarDTO createCarDTO,long categoryId) {
+    public ResponseCarDto saveNewCar(CreateCarDTO createCarDTO,long categoryId) {
         Category existingCategory = categoryRepository.findById(categoryId).orElseThrow(()-> new RuntimeException("Category not found"));
         Car newCar = carMapper.mapToEntity(createCarDTO);
         newCar.setCategory(existingCategory);
@@ -42,14 +42,14 @@ public class CarService implements CarServiceInterface {
     }
 
     @Override
-    public ResponseCarDto findById (Long id) {
+    public ResponseCarDto findCarById (Long id) {
         Car existingCar = carRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Car not found"));
         return carMapper.mapToResponse(existingCar);
     }
 
     @Override
-    public ResponseCarDto update (Long id, CreateCarDTO createCarDTO) {
+    public ResponseCarDto updateExistingCar (Long id, CreateCarDTO createCarDTO) {
         Car existingCar = carRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Car not found"));
 
@@ -63,7 +63,7 @@ public class CarService implements CarServiceInterface {
     }
 
     @Override
-    public String delete (Long id) {
+    public String deleteCarById (Long id) {
         Car existingCar = carRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Category not found"));
 

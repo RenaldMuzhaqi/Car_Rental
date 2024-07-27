@@ -19,7 +19,7 @@ public class UserService implements UserServiceInterface {
     private UserMapper userMapper;
 
     @Override
-    public List<ResponseUserDto> findAll() {
+    public List<ResponseUserDto> findAllUsers() {
         List<User> userList = userRepository.findAll();
         List<ResponseUserDto> responseUserDtoList = new ArrayList<>();
         for (User user : userList) {
@@ -29,21 +29,21 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public ResponseUserDto save(CreateUserDto createUserDto) {
+    public ResponseUserDto saveNewUser(CreateUserDto createUserDto) {
         User newUser = userMapper.mapToEntity(createUserDto);
         User savedUser = userRepository.save(newUser);
         return userMapper.mapToResponse(savedUser);
     }
 
     @Override
-    public ResponseUserDto findById(long id) {
+    public ResponseUserDto findUserById(long id) {
         User existingUser = userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("User not found"));
         return userMapper.mapToResponse(existingUser);
     }
 
     @Override
-    public ResponseUserDto update(long id, CreateUserDto createUserDto) {
+    public ResponseUserDto updateExistingUser(long id, CreateUserDto createUserDto) {
         User existingUser = userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("User not found"));
 
@@ -54,7 +54,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public String delete(long id) {
+    public String deleteUser(long id) {
         User existingUser = userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("User not found"));
 

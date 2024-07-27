@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface CategoryServiceInterface {
 
-    public List<ResponseCategoryDto> findAll();
+    public List<ResponseCategoryDto> findAllCategories();
 
-    public ResponseCategoryDto save(CreateCategoryDto createCategoryDto);
+    public ResponseCategoryDto saveNewCategory(CreateCategoryDto createCategoryDto);
 
-    public ResponseCategoryDto findById(long id);
+    public ResponseCategoryDto findCategoryById(long id);
 
-    public ResponseCategoryDto update(long id, CreateCategoryDto createCategoryDto);
+    public ResponseCategoryDto updateExistingCategory(long id, CreateCategoryDto createCategoryDto);
 
 
-    public String delete(long id);
+    public String deleteCategoryById(long id);
 
 }
