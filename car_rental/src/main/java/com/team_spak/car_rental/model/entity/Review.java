@@ -1,4 +1,4 @@
-package com.team_spak.car_rental.model;
+package com.team_spak.car_rental.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

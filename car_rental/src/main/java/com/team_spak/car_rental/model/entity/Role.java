@@ -1,15 +1,10 @@
-package com.team_spak.car_rental.model;
+package com.team_spak.car_rental.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.security.Permission;
-import java.security.Permissions;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
