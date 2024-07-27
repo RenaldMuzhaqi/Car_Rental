@@ -10,4 +10,12 @@ public interface CategoryServiceInterface {
     public List<ResponseCategoryDto> findAll();
 
     public ResponseCategoryDto save(CreateCategoryDto createCategoryDto);
+
+    public ResponseCategoryDto findById(long id);
+
+    public ResponseCategoryDto update(long id, CreateCategoryDto createCategoryDto);
+
+
+    public String delete(long id);
+
 }

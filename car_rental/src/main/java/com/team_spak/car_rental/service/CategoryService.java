@@ -32,6 +32,7 @@ public class CategoryService implements CategoryServiceInterface {
         return responseCategoryDtoList;
     }
 
+    @Override
     public ResponseCategoryDto save(CreateCategoryDto createCategoryDto) {
 
         Category newCategory = categoryMapper.mapToEntity(createCategoryDto);
@@ -40,6 +41,7 @@ public class CategoryService implements CategoryServiceInterface {
         return categoryMapper.mapToResponse(savedCategory);
     }
 
+    @Override
     public ResponseCategoryDto findById(long id) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
@@ -48,6 +50,7 @@ public class CategoryService implements CategoryServiceInterface {
         return categoryMapper.mapToResponse(existingCategory);
     }
 
+    @Override
     public ResponseCategoryDto update(long id, CreateCategoryDto createCategoryDto) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
@@ -61,6 +64,7 @@ public class CategoryService implements CategoryServiceInterface {
 
     }
 
+    @Override
     public String delete(long id) {
 
         Category existingCategory = categoryRepository.findById(id).orElseThrow(
