@@ -3,6 +3,9 @@ package com.team_spak.car_rental.controller;
 import com.team_spak.car_rental.model.dto.CreateUserDto;
 import com.team_spak.car_rental.model.entity.User;
 import com.team_spak.car_rental.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +28,4 @@ public class RegistrationController {
         userService.registerNewUser(user);
         return "redirect:/login";
     }
-
-
-
 }
