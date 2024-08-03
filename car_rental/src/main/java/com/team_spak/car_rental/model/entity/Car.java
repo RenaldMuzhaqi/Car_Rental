@@ -1,12 +1,18 @@
 package com.team_spak.car_rental.model.entity;
 
 import jakarta.persistence.*;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
+import java.util.Set;
+
+import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
 @Setter
@@ -20,7 +26,7 @@ public class Car {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
 
-    @NotBlank (message = "Brand field should not be empty")
+    @NotBlank(message = "Brand field should not be empty")
     private String brand;
     private String model;
 
@@ -34,5 +40,8 @@ public class Car {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Review> reviewSet;
 
 }

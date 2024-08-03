@@ -4,11 +4,11 @@ package com.team_spak.car_rental.controller;
 import com.team_spak.car_rental.model.dto.CreateCategoryDto;
 import com.team_spak.car_rental.model.dto.ResponseCategoryDto;
 import com.team_spak.car_rental.service.interfaces.CategoryServiceInterface;
-import jakarta.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

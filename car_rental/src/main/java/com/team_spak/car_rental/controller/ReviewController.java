@@ -2,12 +2,10 @@ package com.team_spak.car_rental.controller;
 
 import com.team_spak.car_rental.model.dto.CreateReviewDto;
 import com.team_spak.car_rental.model.dto.ResponseReviewDto;
-import com.team_spak.car_rental.service.ReviewService;
 import com.team_spak.car_rental.service.interfaces.ReviewServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
