@@ -1,6 +1,8 @@
 package com.team_spak.car_rental.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +20,15 @@ public class Car {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
 
+    @NotBlank (message = "Brand field should not be empty")
     private String brand;
     private String model;
+
+    @Min(value = 2005, message = "Car should not be older than 2005")
     private int year;
     private String color;
     private String engine;
+    private String price;
     private boolean available;
 
     @ManyToOne(fetch = FetchType.LAZY)

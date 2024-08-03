@@ -10,9 +10,11 @@ public class ResponseCarDto {
     private long id;
     private String brand;
     private String model;
+    private String price;
     private int year;
     private String color;
     private String engine;
     private boolean available;
+
 
 }

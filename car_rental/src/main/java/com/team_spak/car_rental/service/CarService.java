@@ -72,4 +72,14 @@ public class CarService implements CarServiceInterface {
         return "Car with id " + id + " was succesfully deleted";
     }
 
+    @Override
+    public List<ResponseCarDto> findByBrandAndModel(String brand, String model) {
+        List<Car> carList = carRepository.findByBrandAndModel (brand, model);
+        List<ResponseCarDto> ResponsecarDTOList = new ArrayList<>();
+        for (Car car : carList) {
+            ResponsecarDTOList.add(carMapper.mapToResponse(car));
+        }
+        return ResponsecarDTOList;
+    }
+
 }

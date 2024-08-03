@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @Entity
@@ -15,9 +17,9 @@ import lombok.Setter;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long role_id;
+    private Long roleId;
 
-    private String role_name;
+    private String roleName;
 
 
 }

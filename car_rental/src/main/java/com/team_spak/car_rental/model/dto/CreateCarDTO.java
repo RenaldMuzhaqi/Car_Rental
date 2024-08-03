@@ -6,8 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateCarDTO {
+
+
     private String brand;
     private String model;
+    private String price;
     private int year;
     private String color;
     private String engine;

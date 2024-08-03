@@ -7,6 +7,8 @@ import com.team_spak.car_rental.model.entity.User;
 import com.team_spak.car_rental.repository.UserRepository;
 import com.team_spak.car_rental.service.interfaces.UserServiceInterface;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +19,13 @@ import java.util.List;
 public class UserService implements UserServiceInterface {
     private UserRepository userRepository;
     private UserMapper userMapper;
+    private PasswordEncoder passwordEncoder;
+
+    public void registerNewUser(CreateUserDto createUserDto) {
+        User user = userMapper.mapToEntity(createUserDto);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
 
     @Override
     public List<ResponseUserDto> findAllUsers() {

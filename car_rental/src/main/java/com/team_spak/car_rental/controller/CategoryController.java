@@ -4,7 +4,11 @@ package com.team_spak.car_rental.controller;
 import com.team_spak.car_rental.model.dto.CreateCategoryDto;
 import com.team_spak.car_rental.model.dto.ResponseCategoryDto;
 import com.team_spak.car_rental.service.interfaces.CategoryServiceInterface;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +21,27 @@ public class CategoryController {
     private CategoryServiceInterface categoryServiceInterface;
 
     @GetMapping("/findAll")
-    public List<ResponseCategoryDto> findAllCategories() {
-        return categoryServiceInterface.findAllCategories();
+    public ResponseEntity<List<ResponseCategoryDto>> findAllCategories() {
+        return new ResponseEntity<>(categoryServiceInterface.findAllCategories(), HttpStatus.OK);
     }
-
     @PostMapping("/save")
-    public ResponseCategoryDto saveNewCategory(@RequestBody CreateCategoryDto createCategoryDto) {
-        return categoryServiceInterface.saveNewCategory(createCategoryDto);
+    public ResponseEntity<ResponseCategoryDto> saveNewCategory(@RequestBody CreateCategoryDto createCategoryDto) {
+        return new ResponseEntity<>(categoryServiceInterface.saveNewCategory(createCategoryDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseCategoryDto findCategoryById(@PathVariable("id") long id){
+    public ResponseEntity<ResponseCategoryDto> findCategoryById(@PathVariable("id") long id){
 
-        return categoryServiceInterface.findCategoryById(id);
+        return ResponseEntity.ok(categoryServiceInterface.findCategoryById(id));
     }
     @PutMapping("update/{id}")
-    public ResponseCategoryDto updateExistingCategory(@RequestBody CreateCategoryDto createCategoryDto, @PathVariable("id") long id){
-        return categoryServiceInterface.updateExistingCategory(id, createCategoryDto);
+    public ResponseEntity<ResponseCategoryDto> updateExistingCategory(@RequestBody CreateCategoryDto createCategoryDto, @PathVariable("id") long id){
+        return ResponseEntity.ok(categoryServiceInterface.updateExistingCategory(id, createCategoryDto));
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteCategoryById(@PathVariable("id") long id){
+    public ResponseEntity<String> deleteCategoryById(@PathVariable("id") long id){
 
-        return categoryServiceInterface.deleteCategoryById(id);
+        return ResponseEntity.ok(categoryServiceInterface.deleteCategoryById(id));
     }
 }

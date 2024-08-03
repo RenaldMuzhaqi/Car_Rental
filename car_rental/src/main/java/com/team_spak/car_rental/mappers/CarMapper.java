@@ -11,6 +11,7 @@ public class CarMapper {
         Car car = new Car();
         car.setBrand(createCarDTO.getBrand());
         car.setModel(createCarDTO.getModel());
+        car.setPrice(createCarDTO.getPrice());
         car.setYear(createCarDTO.getYear());
         car.setColor(createCarDTO.getColor());
         car.setEngine(createCarDTO.getEngine());
@@ -21,6 +22,7 @@ public class CarMapper {
         ResponseCarDto responseCarDTO = new ResponseCarDto();
         responseCarDTO.setBrand(car.getBrand());
         responseCarDTO.setModel(car.getModel());
+        responseCarDTO.setPrice(car.getPrice());
         responseCarDTO.setYear(car.getYear());
         responseCarDTO.setColor(car.getColor());
         responseCarDTO.setEngine(car.getEngine());
