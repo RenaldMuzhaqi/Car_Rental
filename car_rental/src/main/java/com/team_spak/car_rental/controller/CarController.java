@@ -46,10 +46,9 @@ public class CarController {
             description = "Http Status 201 CREATED"
     )
     @SecurityRequirement(name = "basicAuth")
-    @PreAuthorize("hasRole('MANAGER')")
-    @PostMapping("/save")
+    @PostMapping("/save/{categoryId}")
     @SecurityRequirement(name = "basicAuth")
-    public ResponseEntity<ResponseCarDto> save(@Valid @RequestBody CreateCarDTO createCarDto, long categoryId){
+    public ResponseEntity<ResponseCarDto> save(@Valid @RequestBody CreateCarDTO createCarDto, @PathVariable ("categoryId") long categoryId){
         return new ResponseEntity<>(carServiceInterface.saveNewCar(createCarDto, categoryId), HttpStatus.CREATED);
     }
 

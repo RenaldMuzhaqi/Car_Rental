@@ -41,14 +41,19 @@ public class CarMapper {
         responseCarDTO.setAvailable(car.isAvailable());
         responseCarDTO.setId(car.getId());
 
+
         Set<Review> reviewSetEntity = car.getReviewSet();
         Set<ResponseReviewDto> setOfResponseReviewDto = new HashSet<>();
-
-        for (Review review: reviewSetEntity) {
-            setOfResponseReviewDto.add(reviewMapper.mapToResponse(review));
+        if (reviewSetEntity != null) {
+            for (Review review: reviewSetEntity) {
+                setOfResponseReviewDto.add(reviewMapper.mapToResponse(review));
+            }
+            responseCarDTO.setReviews(setOfResponseReviewDto);
+            responseCarDTO.setReviews(car.getReviewSet().stream().map(reviewMapper::mapToResponse).collect(Collectors.toSet()));
+        }else{
+            responseCarDTO.setReviews(new HashSet<>());
         }
-//        responseCarDTO.setReviews(setOfResponseReviewDto);
-        responseCarDTO.setReviews(car.getReviewSet().stream().map(reviewMapper::mapToResponse).collect(Collectors.toSet()));
+
         return responseCarDTO;
     }
 }
