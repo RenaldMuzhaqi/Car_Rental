@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-
-public class CreateStaffDTO {
+public class CreateStaffDTO extends CreateUserDto{
     private String name;
     private String lastname;
     private int age;

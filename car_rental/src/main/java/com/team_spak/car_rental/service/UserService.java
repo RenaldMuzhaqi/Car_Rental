@@ -19,13 +19,7 @@ import java.util.List;
 public class UserService implements UserServiceInterface {
     private UserRepository userRepository;
     private UserMapper userMapper;
-    private PasswordEncoder passwordEncoder;
 
-    public void registerNewUser(CreateUserDto createUserDto) {
-        User user = userMapper.mapToEntity(createUserDto);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-    }
 
     @Override
     public List<ResponseUserDto> findAllUsers() {

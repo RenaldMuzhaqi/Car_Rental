@@ -1,27 +1,25 @@
 package com.team_spak.car_rental.model.entity;
 
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "personnel")
-public class Staff {
-
+@Table (name = "clients")
+public class Client {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    private String name;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String phone;
-    private int age;
-    private int experience;
+    private String address;
 
 }

@@ -34,4 +34,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+
+    @OneToOne
+    @JoinColumn(name = "staff_id",referencedColumnName = "id")
+    private Staff staff;
+
+    @OneToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
+
 }

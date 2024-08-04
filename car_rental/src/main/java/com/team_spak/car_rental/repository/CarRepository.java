@@ -8,4 +8,6 @@ public interface CarRepository  extends JpaRepository<Car, Long> {
     List<Car> findByCategoryId(long id);
 
     List <Car> findByBrandAndModel(String brand, String model);
+
+
 }
